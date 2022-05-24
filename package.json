@@ -1,0 +1,25 @@
+{
+    "name": "accounts-master",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "engines": {
+        "node": "14.x"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "mern stack todo",
+        "todo app",
+        "crud app mern stack",
+        "react todo with node"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.16.2",
+        "libreoffice-convert": "^1.4.1"
+    }
+}
