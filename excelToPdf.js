@@ -1,24 +1,28 @@
 const express = require('express');
 const router = express.Router();
-let multer  = require('multer');
+let multer = require('multer');
 
 const storage = multer.diskStorage({
-    destination:function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, './uploads/');
     },
-    filename:function(req, file, cb) {
-        cb(null, new Date().toISOString() + file.originalname);
+    filename: function (req, file, cb) {
+        // cb(null, new Date().toISOString() + file.originalname);
+        cb(null, file.originalname);
     }
 })
-const upload  = multer({ storage: storage, limits:{
-    fileSize: 1024 * 1024 * 5
-} });
+const upload = multer({
+    storage: storage, limits: {
+        fileSize: 1024 * 1024 * 5
+    }
+});
 
 
 router.post('/excetToPdfConvert', upload.single('somefile'), async (req, res, next) => {
 
     const path = require('path');
     const fs = require('fs').promises;
+    console.log(req)
 
     const libre = require('libreoffice-convert');
     libre.convertAsync = require('util').promisify(libre.convert);
@@ -27,7 +31,7 @@ router.post('/excetToPdfConvert', upload.single('somefile'), async (req, res, ne
         const ext = '.pdf'
         const inputPath = path.join("./United.xls");
         const outputPath = path.join(`./pdf/example${ext}`);
-console.log(filePath)
+        console.log(filePath)
         // Read file
         const docxBuf = await fs.readFile(filePath);
 
@@ -38,17 +42,11 @@ console.log(filePath)
         // Here in done you have pdf file which you can save or transfer in another stream
         await fs.writeFile(outputPath, pdfBuf);
         res.sendFile(`./pdf/example.pdf`, { root: __dirname });
-        res.send({
-            status: true,
-            error: "",
-            data: "data",
-            file: ("./pdf/example.pdf", { root: __dirname })
-        })
     }
 
     main(req.file.path).catch(function (err) {
         console.log(`Error converting file: ${err}`);
-    });    
+    });
 })
 
 router.get('/', (req, res, next) => {
