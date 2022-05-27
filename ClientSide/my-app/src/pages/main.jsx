@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Main() {
     function download(blob, filename) {
@@ -14,6 +14,7 @@ function Main() {
         window.URL.revokeObjectURL(url);
     }
     const handleChange = (event) => {
+        setIsLoading(true)
         const myFile = event.target.files[0];
         const data = new FormData()
         data.append('somefile', myFile)
@@ -24,10 +25,12 @@ function Main() {
             //     'Content-Type': 'application/json'
             // }
         }).then((res) => {
+            setIsLoading(false)
             return res.blob()
         })
             .then((blob) => download(blob, "Result"))
     }
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div>
@@ -52,6 +55,9 @@ function Main() {
                     </div>
                 </div>
             </div>
+           {isLoading && <div className="loading" >
+            Server Processing File...
+            </div>}
         </div>
     )
 }
