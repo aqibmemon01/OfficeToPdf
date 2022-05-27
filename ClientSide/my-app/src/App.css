@@ -1,0 +1,41 @@
+.companyTitle{
+    text-align: center;
+}
+.inputCont{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.inputItem{
+    background-color: #2e7d32;
+    height: 200px;
+    min-width: 250px;
+    width: 30%;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    box-shadow: 11px 8px 13px 2px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+    border-radius: 10px;
+}
+.inputItem.excel{
+    background-color: #2e7d32;
+}
+.inputItem.word{
+    background-color: #285291;
+}
+.inputItem.ppt{
+    background-color: #d35729;
+}
+.inputItem > input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
