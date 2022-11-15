@@ -18,11 +18,12 @@ function Main() {
         const myFile = event.target.files[0];
         const data = new FormData()
         data.append('somefile', myFile)
-        fetch(`https://accountsyup.com:5000/api/excetToPdfConvert`, {
+        fetch(`http://accountsyup.com:5000/api/excetToPdfConvert`, {
             method: "POST",
             body: data,
             // headers: {
-            //     'Content-Type': 'application/json'
+            //     // 'Content-Type': 'application/json'
+            //     'Content-Type': 'multipart/form-data'
             // }
         }).then((res) => {
             setIsLoading(false)
