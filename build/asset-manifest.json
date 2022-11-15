@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/srlab/trialapp/static/css/main.9025ded2.css",
-    "main.js": "/srlab/trialapp/static/js/main.794f9ba0.js",
+    "main.js": "/srlab/trialapp/static/js/main.6034c24f.js",
     "static/js/787.28cb0dcd.chunk.js": "/srlab/trialapp/static/js/787.28cb0dcd.chunk.js",
     "index.html": "/srlab/trialapp/index.html",
     "main.9025ded2.css.map": "/srlab/trialapp/static/css/main.9025ded2.css.map",
-    "main.794f9ba0.js.map": "/srlab/trialapp/static/js/main.794f9ba0.js.map",
+    "main.6034c24f.js.map": "/srlab/trialapp/static/js/main.6034c24f.js.map",
     "787.28cb0dcd.chunk.js.map": "/srlab/trialapp/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9025ded2.css",
-    "static/js/main.794f9ba0.js"
+    "static/js/main.6034c24f.js"
   ]
 }
