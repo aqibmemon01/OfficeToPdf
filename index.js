@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(express.static("pdf"))
-app.use('/api', ExcelToPdfRoutes);
+app.use('/officeApi', ExcelToPdfRoutes);
 
 app.use(function(error, req, res, next){
 	// console.log(error);

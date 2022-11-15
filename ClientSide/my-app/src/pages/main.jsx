@@ -18,7 +18,7 @@ function Main() {
         const myFile = event.target.files[0];
         const data = new FormData()
         data.append('somefile', myFile)
-        fetch(`http://accountsyup.com:5000/api/excetToPdfConvert`, {
+        fetch(`https://accountsyup.com/officeApi/excetToPdfConvert`, {
             method: "POST",
             body: data,
             // headers: {
