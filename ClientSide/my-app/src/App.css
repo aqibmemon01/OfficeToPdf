@@ -1,14 +1,23 @@
-.companyTitle{
+body {
+    margin: 0;
+    background-color: #1f2962;
+    padding: 0;
+    color: white;
+}
+
+.companyTitle {
     text-align: center;
 }
-.inputCont{
+
+.inputCont {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-.inputItem{
+
+.inputItem {
     background-color: #2e7d32;
-    height: 200px;
+    height: 100px;
     min-width: 250px;
     width: 30%;
     margin: 20px;
@@ -21,16 +30,20 @@
     box-shadow: 11px 8px 13px 2px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
     border-radius: 10px;
 }
-.inputItem.excel{
+
+.inputItem.excel {
     background-color: #2e7d32;
 }
-.inputItem.word{
+
+.inputItem.word {
     background-color: #285291;
 }
-.inputItem.ppt{
+
+.inputItem.ppt {
     background-color: #d35729;
 }
-.inputItem > input{
+
+.inputItem>input {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,7 +52,8 @@
     opacity: 0;
     cursor: pointer;
 }
-.loading{
+
+.loading {
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     position: fixed;
@@ -51,4 +65,31 @@
     justify-content: center;
     align-items: center;
     font-size: 40px;
+}
+
+.apiStatusTable {
+    border: 1px solid #c9c9c9;
+    text-align: left;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.apiStatusTable th {
+    padding: 5px 20px;
+    background-color: #454d67;
+    border-radius: 5px;
+}
+.apiStatusTable td {
+    padding: 5px 20px;
+    background-color: #454d67;
+    border-radius: 5px;
+}
+.apiStatusTable th:first-child {
+   width: 50vw;
+}
+.Success{
+    background-color: #2e7d32 !important;
+}
+.Error{
+    background-color: #e03d00 !important;
 }
