@@ -21,6 +21,7 @@
         "cors": "^2.8.5",
         "express": "^4.16.2",
         "libreoffice-convert": "^1.4.1",
-        "multer": "^1.4.4"
+        "multer": "^1.4.4",
+        "pdf-viewer-reactjs": "^2.2.3"
     }
 }

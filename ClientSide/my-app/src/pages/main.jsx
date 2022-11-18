@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+// import PDFViewer from 'pdf-viewer-reactjs'
 
 var counterId = 1;
 let stackObj = {};
 
 function Main() {
-    const [renderHelper, setRenderHelper] = useState(false);
+    const [/*renderHelper*/, setRenderHelper] = useState(false);
+    const [/*myBlob*/, setMyBlob] = useState(null);
     function download(blob, filename) {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -19,7 +21,7 @@ function Main() {
     }
     const updateStack = (id, status) => {
         stackObj[id].status = status;
-        setRenderHelper(!renderHelper);
+        setRenderHelper(id);
     }
     const handleChange = async (event) => {
         const myFile = event.target.files[0];
@@ -30,7 +32,7 @@ function Main() {
                 id: myId,
                 status: "Loading"
             }
-            setRenderHelper(!renderHelper)
+            setRenderHelper(myId + "-")
             counterId++;
             const data = new FormData();
             data.append('somefile', myFile);
@@ -45,7 +47,16 @@ function Main() {
                     updateStack(myId, "Success");
                     return res.blob();
                 })
-                .then(blob => download(blob, "Result"))
+                .then(blob => {
+                    let reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function () {
+                        let base64data = reader.result;
+                        console.log(base64data)
+                        setMyBlob(base64data);
+                    }
+                    download(blob, "Result")
+                })
                 .catch(err => updateStack(myId, "Error"));
         }
     }
@@ -74,33 +85,35 @@ function Main() {
                 </div>
             </div>
 
-            <div>
-                {/* {
-                    Object.keys(stackObj).map(key => (
-                        <div key={key}>{stackObj[key].file.name} {stackObj[key].status}</div>
-                    ))
-                } */}
-            </div>
             <div style={{ display: "flex", justifyContent: "center" }} >
                 <table className="apiStatusTable" >
                     <tr>
                         <th>File</th>
+                        <th>Size</th>
                         <th>Status</th>
                     </tr>
                     {
                         Object.keys(stackObj).map(key => (
-                            // <div key={key}>{stackObj[key].file.name} {stackObj[key].status}</div>
-                            <tr key={key}>
+                            <tr key={key + (stackObj[key].status)} id={key + (stackObj[key].status)}>
                                 <td className={stackObj[key].status}>{stackObj[key].file.name}</td>
+                                <td className={stackObj[key].status}>{stackObj[key].file.size}</td>
                                 <td className={stackObj[key].status}>{stackObj[key].status}</td>
                             </tr>
                         ))
                     }
                 </table>
             </div>
-            {/* {isLoading && <div className="loading" >
-                Server Processing File...
-            </div>} */}
+
+            {/* <div>
+                {<PDFViewer
+                    document={{
+                        url: 'https://arxiv.org/pdf/quant-ph/0410100.pdf',
+                      
+                    }}
+                />}
+            </div> */}
+
+
         </div>
     )
 }
